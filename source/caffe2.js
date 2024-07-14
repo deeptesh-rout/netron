@@ -475,7 +475,7 @@ caffe2.TensorType = class {
 caffe2.TensorShape = class {
 
     constructor(dimensions) {
-        this.dimensions = dimensions;
+        this.dimensions = dimensions ? dimensions.map((v) => typeof v === 'bigint' ? v.toNumber() : v) : dimensions;
     }
 
     toString() {
